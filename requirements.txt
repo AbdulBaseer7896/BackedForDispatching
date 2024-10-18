@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 beautifulsoup4
 urllib3
+=======
+beautifulsoup4
+urllib3
+>>>>>>> 70ffde2679d433c59367df327b8ae1301207ec8e
