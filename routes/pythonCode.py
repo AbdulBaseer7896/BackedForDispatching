@@ -89,8 +89,8 @@ def crawl_data(url, MC):
     phone_match = re.search('Phone:(.*)Mailing Address', information)
     phone = phone_match.group(1).strip() if phone_match else ''
 
-    mailing_address_match = re.search('Mailing Address:(.*)USDOT', information)
-    mailing_address = mailing_address_match.group(1).strip() if mailing_address_match else ''
+    # mailing_address_match = re.search('Mailing Address:(.*)USDOT', information)
+    # mailing_address = mailing_address_match.group(1).strip() if mailing_address_match else ''
 
     usdot_address_match = re.search('USDOT Number:(.*)State Carrier ID Number', information)
     usdot_address = usdot_address_match.group(1).strip() if usdot_address_match else ''
@@ -126,13 +126,13 @@ def crawl_data(url, MC):
             # 'Date': crawl_date,
             # 'Operating Authority Status': operating_authority_status,
             'Legal_Name': legal_name,
-            'Physical Address': physical_address, 
-            'Mailing Address': mailing_address,
+            'Physical_Address': physical_address, 
+            'Mailing_Address': mailing_address,
             # 'Power Units': power_units, 'Drivers': drivers,
             'MC': MC,
             # 'Entity Type': entity,
             'Phone': phone,
-            'USDOT Number': usdot_address,
+            'USDOT_Number': usdot_address,
             # 'MCS-150 Form Date': MCS_150_Form_Date,
             # 'MCS-150 Mileage (Year)': MCS_150_MILAGE_YEAR,
             # 'Operation Classification': Operation_Classification,
