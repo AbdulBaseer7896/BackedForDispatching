@@ -127,7 +127,7 @@ def crawl_data(url, MC):
             # 'Operating Authority Status': operating_authority_status,
             'Legal_Name': legal_name,
             'Physical_Address': physical_address, 
-            'Mailing_Address': mailing_address,
+            # 'Mailing_Address': mailing_address,
             # 'Power Units': power_units, 'Drivers': drivers,
             'MC': MC,
             # 'Entity Type': entity,
