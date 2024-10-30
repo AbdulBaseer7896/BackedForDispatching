@@ -211,5 +211,23 @@ router.get('/carriersData', async (req, res) => {
   });
 
 
+  router.put('/toggleStatus/:id', authenticateToken, async (req, res) => {
+    try {
+        const carrier = await Carrier.findById(req.params.id);
+        if (!carrier) return res.status(404).json({ message: "Carrier not found" });
+
+        // Toggle status
+        carrier.isActive = carrier.isActive === 'active' ? 'inActive' : 'active';
+        await carrier.save();
+
+        res.status(200).json({ message: "Status updated successfully", carrier });
+    } catch (error) {
+        res.status(500).json({ message: "Error updating status", error });
+    }
+});
+
+
+
+
 
 module.exports = router;

@@ -12,7 +12,12 @@ const CarrierDataSchema = new mongoose.Schema({
     MCAuthFile: { type: String, default: "None" },  // Field for MC Authority file path
     COLFile: { type: String, default: "None" },      // Field for Certificate of Liability file path
     W9File: { type: String, default: "None" },       // Field for W9 file path
-    NOVFile: { type: String, default: "None" }       // Field for Notice of Violation file path
+    NOVFile: { type: String, default: "None" },
+    isActive: {
+        type: String,
+        enum : ["active" , "inActive"],
+        default: "active"
+    }       // Field for Notice of Violation file path
 });
 
 // Properly export the Carrier model
