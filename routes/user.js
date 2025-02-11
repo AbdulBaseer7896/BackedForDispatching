@@ -5,6 +5,8 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken")
 const {authenticateToken} = require("./userAuth")
 const Carrier = require('../models/CarrierData');  // Import the Carrier model
+const ContactForm = require('../models/contactData.js');
+// models\contactData.js
 // POST route to save the carrier data
 const express = require('express');
 const multer = require('multer');
@@ -166,50 +168,43 @@ router.post('/CarrierData', upload.fields([
 
 
 
-// // POST route to save the carrier data
-// router.post('/CarrierData', upload.fields([
-//     { name: 'MCAuthFile' },
-//     { name: 'COLFile' },
-//     { name: 'W9File' },
-//     { name: 'NOVFile' },
-// ]), async (req, res) => {
-//     try {
-//         const carrierData = JSON.parse(req.body.carrierData); // Parse the JSON string from FormData
-//         const { MCAuthFile, COLFile, W9File, NOVFile } = req.files;
+// Example route handler
+router.post('/general-contact-us', async (req, res) => {
+    try {
+        console.log("This start")
+        console.log("this is req.body - " , req.body)
+        const formData = new ContactForm(req.body);
+        console.log("This is formData - " , formData)
+        await formData.save();
+        console.log("This end")
+        res.status(201).json({ message: 'Form submitted successfully' });
+    } catch (error) {
+        console.log("this end")
+        res.status(500).json({ error: 'Server error' });
+    }
+});
 
-//         // Create a new carrier instance
-//         const carrier = new Carrier({
-//             ...carrierData,
-//             MCAuthFile: MCAuthFile[0].path, // Store the file path
-//             COLFile: COLFile[0].path,
-//             W9File: W9File[0].path,
-//             NOVFile: NOVFile[0].path
-//         });
-
-//         // Save the carrier data to the database
-//         await carrier.save();
-//         res.status(201).json({ message: 'Carrier data saved successfully!' });
-//     } catch (error) {
-//         console.error('Error saving carrier data:', error);
-//         res.status(500).json({ message: 'Error saving carrier data', error });
-//     }
-// });
-
-
-
-// Define the route for file upload
 
 
 
 router.get('/carriersData', async (req, res) => {
     try {
-      const carriers = await Carrier.find().sort({ _id: -1 });  // Fetch all records from the Carrier collection
-      res.status(200).json(carriers);  // Send the result as JSON
+        console.log("This start")
+        const carriers = await Carrier.find().sort({ _id: -1 });  // Fetch all records from the Carrier collection
+        res.status(200).json(carriers);  // Send the result as JSON
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching data", error });
+    }
+});
+
+router.get('/ContactData', async (req, res) => {
+    try {
+      const ContactForms = await ContactForm.find().sort({ _id: -1 });  // Fetch all records from the Carrier collection
+      res.status(200).json(ContactForms);  // Send the result as JSON
     } catch (error) {
       res.status(500).json({ message: "Error fetching data", error });
     }
   });
-
 
   router.put('/toggleStatus/:id', authenticateToken, async (req, res) => {
     try {
