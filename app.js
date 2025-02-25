@@ -14,8 +14,8 @@ const app = express();
 // app.use(cors());
 // app.use(cors());
 app.use(cors({
-  origin: 'https://backedfordispatching.onrender.com', // Your React app's origin
-  origin: 'http://localhost:3001', // Your React app's origin
+  // origin: 'http://localhost:3001', // Your React app's origin
+  origin: 'https://dispatchingllc.netlify.app', // Your React app's origin
   credentials: true
 }));
 
