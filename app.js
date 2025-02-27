@@ -14,16 +14,16 @@ const app = express();
 // app.use(cors());
 // app.use(cors());
 app.use(cors({
-  // origin: 'http://localhost:3000', // Your React app's origin
   origin: 'https://dispatchingllc.netlify.app', // Your React app's origin
+  // origin: 'http://localhost:3000', // Your React app's origin
   credentials: true
 }));
 
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//   next();
+// });
 
 app.use('/uploads', express.static('uploads'));
 

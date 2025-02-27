@@ -253,10 +253,11 @@ router.put('/toggleStatus/:id', authenticateToken, async (req, res) => {
         res.status(500).json({ message: "Error updating status", error });
     }
 
+});
 
 
-    // Add these delete routes to your existing router
-   // Move these delete routes outside the toggleStatus route
+// Add these delete routes to your existing router
+// Move these delete routes outside the toggleStatus route
 router.delete('/deleteCarrier/:id', authenticateToken, async (req, res) => {
     try {
         await Carrier.findByIdAndDelete(req.params.id);
@@ -264,15 +265,16 @@ router.delete('/deleteCarrier/:id', authenticateToken, async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: "Error deleting carrier", error });
     }
-});
 
-router.delete('/deleteContactForm/:id', authenticateToken, async (req, res) => {
-    try {
-        await ContactForm.findByIdAndDelete(req.params.id);
-        res.status(200).json({ message: "Contact form deleted successfully" });
-    } catch (error) {
-        res.status(500).json({ message: "Error deleting contact form", error });
-    }
+    router.delete('/deleteContactForm/:id', authenticateToken, async (req, res) => {
+        try {
+            await ContactForm.findByIdAndDelete(req.params.id);
+            res.status(200).json({ message: "Contact form deleted successfully" });
+        } catch (error) {
+            res.status(500).json({ message: "Error deleting contact form", error });
+        }
+    });
+
 });
 
 // router.delete('/deleteContact', authenticateToken, async (req, res) => {
@@ -283,7 +285,6 @@ router.delete('/deleteContactForm/:id', authenticateToken, async (req, res) => {
 //         res.status(500).json({ message: "Error deleting contact", error });
 //     }
 // });
-
 
 
 router.delete('/deleteContact/:id', authenticateToken, async (req, res) => {
@@ -299,14 +300,13 @@ router.delete('/deleteContact/:id', authenticateToken, async (req, res) => {
         res.status(200).json({ message: 'Carrier deleted successfully' });
     } catch (error) {
         console.error('Delete error:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             message: 'Error deleting carrier',
-            error: error.message 
+            error: error.message
         });
     }
 });
 
-});
 
 
 
