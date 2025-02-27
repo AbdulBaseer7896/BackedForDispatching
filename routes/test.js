@@ -17,9 +17,6 @@ const upload = multer({ storage: storage });
 
 // Define the route for file upload
 router.post('/test', upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'pic', maxCount: 1 }]), function (req, res) {
-    console.log("This is the uploaded avatar file = ", req.files['avatar']);
-    console.log("This is the uploaded pic file = ", req.files['pic']);
-    console.log("This is the upload body = ", req.body);
 
     res.status(200).json({
         message: "Files uploaded successfully!",

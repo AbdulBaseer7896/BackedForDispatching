@@ -36,7 +36,6 @@ router.get('/MCnumber/:mc', async (req, res) => {
         // Send back the Python script's output (assumed to be JSON)
         try {
             const jsonResponse = JSON.parse(stdout);
-            console.log("this is important to see" , jsonResponse)
             res.json(jsonResponse);
         } catch (parseError) {
             console.error(`Error parsing JSON: ${parseError}, Output: ${stdout}`);
@@ -108,7 +107,6 @@ router.get('/mc-lookup/:mcNumber', async (req, res) => {
             'ETag': response.headers['etag'],
             'Vary': response.headers['vary']
         });
-        console.log("This si the data = "  , formattedData)
 
         res.status(response.status).json(formattedData);
 
