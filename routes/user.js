@@ -277,15 +277,6 @@ router.delete('/deleteCarrier/:id', authenticateToken, async (req, res) => {
 
 });
 
-// router.delete('/deleteContact', authenticateToken, async (req, res) => {
-//     try {
-//         await Contact.findByIdAndDelete(req.params.id);
-//         res.status(200).json({ message: "Contact deleted successfully" });
-//     } catch (error) {
-//         res.status(500).json({ message: "Error deleting contact", error });
-//     }
-// });
-
 
 router.delete('/deleteContact/:id', authenticateToken, async (req, res) => {
     try {
